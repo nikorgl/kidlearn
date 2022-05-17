@@ -20,12 +20,7 @@ export class UserService {
     const userByEmail = await this.userRepository.findOne({
       email: createUserDto.email,
     });
-    if (userByEmail)
-      throw new HttpException(
-        'Email is taken',
-        HttpStatus.UNPROCESSABLE_ENTITY,
-      );
-
+    if (userByEmail) throw new HttpException('Email is taken', HttpStatus.UNPROCESSABLE_ENTITY);
     const newUser = new UserEntity();
     Object.assign(newUser, createUserDto);
     return await this.userRepository.save(newUser);
@@ -36,14 +31,8 @@ export class UserService {
       { email: loginUserDto.email },
       { select: ['id', 'name', 'email', 'password'] },
     );
-    if (
-      !user ||
-      !(await compare(loginUserDto.password, user.password))
-    )
-      throw new HttpException(
-        'Credetials are not valid',
-        HttpStatus.UNPROCESSABLE_ENTITY,
-      );
+    if (!user || !(await compare(loginUserDto.password, user.password)))
+      throw new HttpException('Credetials are not valid', HttpStatus.UNPROCESSABLE_ENTITY);
 
     delete user.password;
     return user;
