@@ -20,4 +20,4 @@ jobs:
           username: z923163a_k      # Измените на ваш FTP-логин от Beget
           password: ${{ secrets.FTP_PASSWORD }} # Подставится автоматически из Secrets
           server-dir: /kidlearn.ru/      # Папка на Beget, куда заливать сайт (обычно public_html/)
-          security: ftps
+          security: strict
