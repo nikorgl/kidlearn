@@ -17,6 +17,6 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: z923163a.beget.tech         # Сервер Beget для FTP соединения
-          username: z923163a_u      # Измените на ваш FTP-логин от Beget
+          username: z923163a_k      # Измените на ваш FTP-логин от Beget
           password: ${{ secrets.FTP_PASSWORD }} # Подставится автоматически из Secrets
-          server-dir: /kidlearn.ru/public_html      # Папка на Beget, куда заливать сайт (обычно public_html/)
+          server-dir: /kidlearn.ru/      # Папка на Beget, куда заливать сайт (обычно public_html/)
